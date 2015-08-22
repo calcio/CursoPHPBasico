@@ -1,0 +1,1 @@
+Texto a ser inserido no arquivo. Pode ser substituído por uma variável contendo um texto longo
