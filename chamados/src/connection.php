@@ -1,5 +1,5 @@
 <?php
-require_once BASE_PAHT . DS . '../config/database.php';
+require_once BASE_PATH . DS . 'config/database.php';
 
 //connection set
 //open db connection

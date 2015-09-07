@@ -10,24 +10,122 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/sticky-footer.css">
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
     <title>Sistema de cadastro de atividades</title>
 </head>
 <body>
     <head>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                    <img src="assets/img/php.ico" width="30px">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a hreh="#"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Listar atividades</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Criar nova atividade</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search" method="post" action="#">
+                    <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscar" name="buscar">
+                        <span class="input-group-addon glyphicon glyphicon-search"></span>
+                    </div>
+                </div>
+
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Administração <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Usuários</a></li>
+                            <li><a href="#">Setores</a></li>
+                            <li><a href="#">Status</a></li>
+                            <li role="separator" class="divider">Setores</li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav><br />
         <div class="page-header text-center">
-            <h1>Gerenciador de adividades <small>v.: 1.0</small></h1>
+            <h1>Gerenciador de atividades <small>v.: 1.0</small></h1>
         </div>
     </head>
 
     <main>
-        <div class="container-fluid"></div>
+        <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h3 class="alert-danger text-center"><span class="glyphicon glyphicon-flag"></span> Atividades pendentes</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#">#1 - Link 1</a></li>
+                    <li><a href="#">#2 - Link 2</a></li>
+                    <li><a href="#">#3 - Link 3</a></li>
+                    <li><a href="#">#4 - Link 4</a></li>
+                    <li><a href="#">#5 - Link 5</a></li>
+                    <li><a href="#">#6 - Link 6</a></li>
+                    <li><a href="#">#7 - Link 7</a></li>
+                    <li><a href="#">#8 - Link 8</a></li>
+                    <li><a href="#">#9 - Link 9</a></li>
+                    <li><a href="#">#10 - Link 10</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h3 class="alert-warning text-center"><span class="glyphicon glyphicon-exclamation-sign"></span> Atividades em andamento</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#">#1 - Link 1</a></li>
+                    <li><a href="#">#2 - Link 2</a></li>
+                    <li><a href="#">#3 - Link 3</a></li>
+                    <li><a href="#">#4 - Link 4</a></li>
+                    <li><a href="#">#5 - Link 5</a></li>
+                    <li><a href="#">#6 - Link 6</a></li>
+                    <li><a href="#">#7 - Link 7</a></li>
+                    <li><a href="#">#8 - Link 8</a></li>
+                    <li><a href="#">#9 - Link 9</a></li>
+                    <li><a href="#">#10 - Link 10</a></li>
+                </ul>
+
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h3 class="alert-info text-center"><span class="glyphicon glyphicon-ok"></span> Atividades resolvidas</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#">#1 - Link 1</a></li>
+                    <li><a href="#">#2 - Link 2</a></li>
+                    <li><a href="#">#3 - Link 3</a></li>
+                    <li><a href="#">#4 - Link 4</a></li>
+                    <li><a href="#">#5 - Link 5</a></li>
+                    <li><a href="#">#6 - Link 6</a></li>
+                    <li><a href="#">#7 - Link 7</a></li>
+                    <li><a href="#">#8 - Link 8</a></li>
+                    <li><a href="#">#9 - Link 9</a></li>
+                    <li><a href="#">#10 - Link 10</a></li>
+                </ul>
+
+            </div>
+        </div>
+	</div>
     </main>
 
     <footer class="footer">
         <div class="container">
             <p class="text-muted">
-                Gerenciador de atividades - 2015 - <?= date('d/m/Y'); ?>
+                Gerenciador de atividades - 2015 - 2015
                 <br />versão 1.0
             </p>
         </div>
