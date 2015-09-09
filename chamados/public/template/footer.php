@@ -1,7 +1,8 @@
+    </main>
     <footer class="footer">
         <div class="container">
             <p class="text-muted">
-                <?= SUBTITLE; ?> - 2015 - <?= date('Y'); ?>
+                <?= SUBTITLE; ?> - 2015 / <?= date('Y'); ?>
                 <br /><?= VERSION; ?>
             </p>
         </div>

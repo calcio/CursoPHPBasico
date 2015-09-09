@@ -1,11 +1,12 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/header.php';
 ?>
-<main>
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="col-sm-12 col-md-4 col-lg-4">
-                <h3 class="alert-danger text-center"><span class="glyphicon glyphicon-flag"></span> Atividades pendentes</h3>
+                <h3 class="alert-danger text-center">
+                    <span class="glyphicon glyphicon-flag"></span> Atividades pendentes
+                </h3>
                 <ul class="list-unstyled">
                     <li><a href="#">#1 - Link 1</a></li>
                     <li><a href="#">#2 - Link 2</a></li>
@@ -21,7 +22,9 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/header.php';
             </div>
 
             <div class="col-sm-12 col-md-4 col-lg-4">
-                <h3 class="alert-warning text-center"><span class="glyphicon glyphicon-exclamation-sign"></span> Atividades em andamento</h3>
+                <h3 class="alert-warning text-center">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> Atividades em andamento
+                </h3>
                 <ul class="list-unstyled">
                     <li><a href="#">#1 - Link 1</a></li>
                     <li><a href="#">#2 - Link 2</a></li>
@@ -55,7 +58,5 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/header.php';
             </div>
         </div>
     </div>
-</main>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/footer.php';
-?>

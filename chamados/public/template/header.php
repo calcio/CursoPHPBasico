@@ -42,27 +42,18 @@ $connection = dbConnect();
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a hreh="#"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Listar atividades</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> Listar atividades</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Criar nova atividade</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search" method="post" action="#">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="buscar" name="buscar">
-                            <span class="input-group-addon glyphicon glyphicon-search"></span>
-                        </div>
-                    </div>
-                    </form>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Administração <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Usuários</a></li>
-                                <li><a href="#">Setores</a></li>
-                                <li><a href="#">Status</a></li>
-                                <li role="separator" class="divider">Setores</li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Setores</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-check"></span> Status</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -73,3 +64,4 @@ $connection = dbConnect();
             <h1>Gerenciador de adividades <small><?= VERSION; ?></small></h1>
         </div>
     </head>
+    <main>
