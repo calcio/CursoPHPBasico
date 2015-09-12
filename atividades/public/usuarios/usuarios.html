@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Cadastro de usuários</h2>
+            <form class="form-horizontal" action="" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="nome" placeholder="nome completo" maxlength="200">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="seu email" maxlength="200">
+                </div>
+
+                <div class="form-group">
+                    <label for="senha" class="control-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" id="senha" placeholder="sua senha" maxlength="20">
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-sm-1">
+                        <label for="setor">Setor</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="setor" id="setor">
+                            <option value="option">option</option>
+                            <option value="option">option</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="tipo">Tipo do usuário</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="tipo" id="tipo">
+                            <option value="option">option</option>
+                            <option value="option">option</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <label for="ativo">Ativo?</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="ativo" id="ativo">
+                            <option value="option">option</option>
+                            <option value="option">option</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <br /><br />
+                    <button type="submit" class="btn btn-info">Gravar <span class="glyphicon glyphicon-ok"></span></button>&nbsp;&nbsp;&nbsp;
+                    <button type="reset" name="reset" class="btn btn-warning">Limpar <span class="glyphicon glyphicon-erase"></span></button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
