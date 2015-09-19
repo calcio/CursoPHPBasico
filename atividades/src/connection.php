@@ -17,3 +17,19 @@ function dbClose($con)
 {
     mysqli_close($con);
 }
+
+function antiInjection($str)
+{
+    // Remove palavras suspeitas de injection.
+    $badString = "/(\n|\r|%0a|%0d|Content-Type:|bcc:|to:|cc:|Autoreply:|#|";
+    $badString .= "from|select|insert|delete|where|drop table|show tables|";
+    $badString .= "FROM|SELECT|INSERT|DELETE|WHERE|DROP TABLE|SHOW TABLES|";
+    $badString .= "\*|--|\\\\)/";
+
+    $str = preg_replace($badString, '', $str);
+    $str = trim($str);        // Remove espaços vazios.
+    $str = strip_tags($str);  // Remove tags HTML e PHP.
+    $str = addslashes($str);  // Adiciona barras invertidas à uma string.
+
+    return $str;
+}

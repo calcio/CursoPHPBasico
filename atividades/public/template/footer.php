@@ -11,4 +11,3 @@
     <script src="<?= SITE_URL; ?>assets/js/bootstrap.min.js"></script>
 </body>
 </html>
-<?php dbClose($connection);

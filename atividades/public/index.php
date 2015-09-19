@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../config/constants.php';
+require_once dirname(__FILE__) . DS . '../src/protectCSRF.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,18 +32,27 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../config/constants.php'
                     <br /><br />
                     <div class="account-wall">
                         <img class="profile-img" src="assets/img/profile.png" alt="imagem da autenticacao">
-                        <form class="form-signin" method="post" action="dasboard.php">
+                        <form class="form-signin" method="post" action="<?= SITE_URL; ?>autenticacao/login.php">
+                            <input type="hidden" name="token" value="<?= geraToken() ?>" />
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                                <input type="text" class="form-control" placeholder="Login" required autofocus maxlength="200">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required autofocus maxlength="200">
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                <input type="password" class="form-control" placeholder="Senha" required maxlength="32">
+                                <input type="password"  name="senha" id="senha" class="form-control" placeholder="Senha" required maxlength="32">
                             </div>
                             <br />
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+                            <br />
+                            <?php if (isset($_SESSION['error'])) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span>
+                                    <?= $_SESSION['error']; ?>
+                                </div>
+                            <?php endif; ?>
                         </form>
                     </div>
                 </div>
