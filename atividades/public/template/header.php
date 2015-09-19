@@ -2,8 +2,9 @@
 session_start();
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../config/constants.php';
-require_once dirname(__FILE__) . DS . '../../src/connection.php';
-require_once dirname(__FILE__) . DS . '../../src/protectCSRF.php';
+require_once dirname(__FILE__) . DS . '../../src/sessionVerify.php';
+
+checkUserLogedIn();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,16 +44,20 @@ require_once dirname(__FILE__) . DS . '../../src/protectCSRF.php';
                         <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> Listar atividades</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Criar nova atividade</a></li>
                     </ul>
+
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Administração <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="<?= SITE_URL; ?>usuarios/form.php"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['nome']; ?></a></li>
                                 <li role="separator" class="divider"></li>
+
+                                <?php if (checkUserIsAdmin()) : ?>
                                 <li><a href="<?= SITE_URL; ?>usuarios/form.php"><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
                                 <li><a href="<?= SITE_URL; ?>setores/form.php"><span class="glyphicon glyphicon-map-marker"></span> Setores</a></li>
                                 <li><a href="<?= SITE_URL; ?>status/form.php"><span class="glyphicon glyphicon-check"></span> Status</a></li>
                                 <li role="separator" class="divider"></li>
+                                <?php endif; ?>
                                 <li><a href="<?= SITE_URL; ?>autenticacao/logout.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
                             </ul>
                         </li>
