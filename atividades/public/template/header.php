@@ -1,10 +1,16 @@
 <?php
-session_start();
+function showHeader(array $css=[])
+{
+    session_start();
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../config/constants.php';
-require_once dirname(__FILE__) . DS . '../../src/sessionVerify.php';
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../config/constants.php';
+    require_once BASE_PATH . 'src/sessionVerify.php';
 
-checkUserLogedIn();
+    checkUserLogedIn();
+
+    require_once BASE_PATH . 'src/connection.php';
+    require_once BASE_PATH . 'src/showMessage.php';
+    require_once BASE_PATH . 'src/prepareCrud.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,6 +23,16 @@ checkUserLogedIn();
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/styles.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/sticky-footer.css">
+    <?php
+    if ($css) :
+        foreach ($css as $script) :
+            $src = SITE_URL . 'assets/css/' . $script . '.css';
+    ?>
+            <link rel="stylesheet" href="<?= $src ?>">
+    <?php
+        endforeach;
+    endif;
+    ?>
     <title><?= SITE_TITLE; ?></title>
 </head>
 
@@ -32,7 +48,7 @@ checkUserLogedIn();
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= SITE_URL; ?>dasboard.php">
+                    <a class="navbar-brand" href="<?= SITE_URL; ?>dashboard.php">
                         <img src="<?= SITE_URL; ?>assets/img/php.ico" width="30px">
                     </a>
                 </div>
@@ -53,9 +69,9 @@ checkUserLogedIn();
                                 <li role="separator" class="divider"></li>
 
                                 <?php if (checkUserIsAdmin()) : ?>
-                                <li><a href="<?= SITE_URL; ?>usuarios/form.php"><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
-                                <li><a href="<?= SITE_URL; ?>setores/form.php"><span class="glyphicon glyphicon-map-marker"></span> Setores</a></li>
-                                <li><a href="<?= SITE_URL; ?>status/form.php"><span class="glyphicon glyphicon-check"></span> Status</a></li>
+                                <li><a href="<?= SITE_URL; ?>usuarios/index.php"><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
+                                <li><a href="<?= SITE_URL; ?>setores/index.php"><span class="glyphicon glyphicon-map-marker"></span> Setores</a></li>
+                                <li><a href="<?= SITE_URL; ?>status/index.php"><span class="glyphicon glyphicon-check"></span> Status</a></li>
                                 <li role="separator" class="divider"></li>
                                 <?php endif; ?>
                                 <li><a href="<?= SITE_URL; ?>autenticacao/logout.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -70,3 +86,4 @@ checkUserLogedIn();
         </div>
     </head>
     <main>
+<?php } ?>

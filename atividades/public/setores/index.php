@@ -1,16 +1,12 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
+showHeader();
 require_once BASE_PATH . 'public/setores/queries.php';
+require_once BASE_PATH . 'src/pagination.php';
 
 $setores = getAllSectors();
 
-if (isset($_SESSION['error'])) :
-    showMessage($messageType = MESSAGE_TYPE_ERRO, $_SESSION['error']);
-endif;
-
-if (isset($_SESSION['success'])) :
-    echo showMessage($messageType = MESSAGE_TYPE_SUCCESS, $_SESSION['success']);
-endif;
+showMessage();
 ?>
 
         <div class="container">
@@ -19,7 +15,8 @@ endif;
                 <div class="panel-heading"><h2>Listagem de setores </h2></div>
                 <div class="panel-body text-right">
                     <a href="<?= SITE_URL ?>setores/form.php"
-                        class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Novo
+                        class="btn btn-primary" title="Novo registro">
+                        <span class="glyphicon glyphicon-plus"></span> Novo
                     </a>
                 </div>
 
@@ -43,7 +40,8 @@ endif;
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-center">
-                                    <nav>
+                                    <?php showPagination(3, 6, SITE_URL .'setores/index.php'); ?>
+                                    <!-- <nav>
                                         <ul class="pagination pagination-sm">
                                             <li class="disabled">
                                                 <span>
@@ -69,7 +67,7 @@ endif;
                                                 </a>
                                             </li>
                                         </ul>
-                                    </nav>
+                                    </nav> -->
                                 </td>
                             </tr>
                         </tfoot>
@@ -80,15 +78,14 @@ endif;
                                 <td class="text-center"><?= $setores['result'][$i]['sigla'] ?></td>
                                 <td><?= $setores['result'][$i]['nome'] ?></td>
                                 <td class="col-md-2 text-center">
-                                    <a href="<?= SITE_URL ?>setores/view.php?id=<?= $setores['result'][$i]['id'] ?>" alt="Vizualizar">
+                                    <a href="<?= SITE_URL ?>setores/view.php?id=<?= $setores['result'][$i]['id'] ?>" title="Vizualizar">
                                         <span class="glyphicon glyphicon-eye-open"></span>
                                     </a>&nbsp;&nbsp;
-                                    <a href="<?= SITE_URL ?>setores/form.php?id=<?= $setores['result'][$i]['id'] ?>" alt="Editar">
+                                    <a href="<?= SITE_URL ?>setores/form.php?id=<?= $setores['result'][$i]['id'] ?>" title="Editar">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>&nbsp;&nbsp;
-                                    <!-- fazer esse delete via jquery e usando confirmação -->
-                                    <a href="<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $setores['result'][$i]['id'] ?>" alt="Excluir">
-                                        <span class="text-danger glyphicon glyphicon-trash"></span>
+                                    <a href="" id="<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $setores['result'][$i]['id'] ?>"
+                                        title="Excluir"><span class="text-danger glyphicon glyphicon-trash"></span>
                                     </a>
                                 </td>
                             </tr>
@@ -100,3 +97,4 @@ endif;
         </div>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/footer.php';
+showFooter(['confirmDelete']);

@@ -6,10 +6,9 @@ function geraToken()
 
 function verificaToken($token)
 {
-    if (isset($_SESSION['token']) && $token == $_SESSION['token']) {
-        unset($_SESSION['token']);
-        return true;
+    if (empty($_SESSION['token']) || $token != $_SESSION['token']) {
+        require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../config/constants.php';
+        require_once BASE_PATH . 'public/errors/error_404.php';
+        exit;
     }
-
-    return false;
 }

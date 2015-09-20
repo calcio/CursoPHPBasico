@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/header.php';
+showHeader();
 ?>
     <div class="container-fluid">
         <div class="row-fluid">
@@ -78,3 +79,4 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/header.php';
     </div>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'template/footer.php';
+showFooter();

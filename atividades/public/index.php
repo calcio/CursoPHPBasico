@@ -36,12 +36,12 @@ require_once dirname(__FILE__) . DS . '../src/protectCSRF.php';
                             <input type="hidden" name="token" value="<?= geraToken() ?>" />
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required autofocus maxlength="200">
+                                <input type="email" name="email" id="email" value="calcionit@gmail.com" class="form-control" placeholder="E-mail" required autofocus maxlength="200">
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                <input type="password"  name="senha" id="senha" class="form-control" placeholder="Senha" required maxlength="32">
+                                <input type="password"  name="senha" id="senha" value="123456789" class="form-control" placeholder="Senha" required maxlength="32">
                             </div>
                             <br />
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>

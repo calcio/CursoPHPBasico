@@ -1,6 +1,8 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
+showHeader();
 require_once BASE_PATH . 'public/setores/queries.php';
+require_once BASE_PATH . 'src/protectCSRF.php';
 
 if (isset($_REQUEST['id'])) :
     $action = 'update';
@@ -24,13 +26,21 @@ endif;
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-6">
-                    <a href='<?= SITE_URL ?>setores/index.php' class="btn btn-primary">Voltar</a>
+                    <a href='<?= SITE_URL ?>setores/index.php'
+                        class="btn btn-primary" title="Voltar">
+                        <span class="glyphicon glyphicon-chevron-left"></span> Voltar</a>
+                <?php if ($id) : ?>
+                    <a href="<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $id ?>"
+                        title="Excluir" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                <?php endif; ?>
                 </div>
             </div><br /><br />
 
             <form class="form-horizontal" action="actions.php" method="post">
                 <input type="hidden" name="action" value="<?= $action ?>">
                 <input type="hidden" name="id" value="<?= $id ?>">
+                <input type="hidden" name="token" value="<?= geraToken() ?>" />
 
                 <div class="form-group">
                     <div class="row">
@@ -61,3 +71,4 @@ endif;
         </div>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/footer.php';
+showFooter();

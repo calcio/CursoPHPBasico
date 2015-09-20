@@ -8,27 +8,27 @@ require_once dirname(__FILE__) . DS . '../../src/protectCSRF.php';
 if ($_POST) {
     extract($_POST);
 
-    $token = isset($token) ?: null;
+    $token = isset($token) ? $token : null;
+    $email = isset($email) ? $email : null;
+    $senha = isset($senha) ? $senha : null;
 
-    if (verificaToken($token)) {
+    //if (verificaToken($token)) {
+    verificaToken($token);
 
-        $email = antiInjection($email);
-        $senha = antiInjection($senha);
+    $email = antiInjection($email);
+    $senha = antiInjection($senha);
 
-        //Recupera senha criptografada (HASH)
-        $hash = getUserHash($email);
+    //Recupera senha criptografada (HASH)
+    $hash = getUserHash($email);
 
-        //Verifica se senha digitada é válida no banco
-        //Tem que ser um array
-        $dataPasswordVerify = ['email' => $email, 'senha' => $senha, 'hash' => $hash];
+    //Verifica se senha digitada é válida no banco
+    //Tem que ser um array
+    $dataPasswordVerify = ['email' => $email, 'senha' => $senha, 'hash' => $hash];
 
-        if (passwordCheck($dataPasswordVerify) === false) {
-            header('Location: ' . SITE_URL . 'index.php');
-        } else {
-            header('Location: ' . SITE_URL . 'dashboard.php');
-        }
-    } else{
+    if (passwordCheck($dataPasswordVerify) === false) {
         header('Location: ' . SITE_URL . 'index.php');
+    } else {
+        header('Location: ' . SITE_URL . 'dashboard.php');
     }
 } else {
     header('Location: ' . SITE_URL . 'index.php');

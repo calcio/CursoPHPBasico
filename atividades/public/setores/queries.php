@@ -1,5 +1,9 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../config/constants.php';
+require_once BASE_PATH . 'src/crud.php';
+require_once BASE_PATH . 'src/sessionVerify.php';
+
+checkUserLogedIn();
 
 /*
 * Esse arquivo serve para gerar qualquer tipo de consulta

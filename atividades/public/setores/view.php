@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
+showHeader();
 require_once BASE_PATH . 'public/setores/queries.php';
 
 if (isset($_REQUEST['id'])) :
@@ -12,6 +13,8 @@ if (isset($_REQUEST['id'])) :
 else :
     header('location:' . SITE_URL . 'setores/index.php');
 endif;
+
+showMessage();
 ?>
         <div class="container">
             <h2>Detalhe do registro</h2><br />
@@ -19,7 +22,18 @@ endif;
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th colspan='2' class="text-right"><a href='<?= SITE_URL ?>setores/index.php' class="btn btn-primary">Voltar</a></th>
+                        <th colspan="2" class="text-right">
+                            <a href="<?= SITE_URL ?>setores/index.php"
+                                class="btn btn-primary" title="Voltar">
+                                <span class="glyphicon glyphicon-chevron-left"></span> Voltar</a>
+                            <a href="<?= SITE_URL ?>setores/form.php?id=<?= $id ?>"
+                                class="btn btn-primary" title="Editar">
+                                <span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a href="#"
+                                id = "<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $id ?>"
+                                title="Excluir" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                        </th>
                     </tr>
                 </thead>
 
@@ -37,3 +51,4 @@ endif;
         </div>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/footer.php';
+showFooter(['confirmDelete']);
