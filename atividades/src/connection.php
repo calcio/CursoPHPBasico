@@ -1,21 +1,18 @@
 <?php
 require_once BASE_PATH . DS . 'config/database.php';
 
-//connection set
-//open db connection
 function dbConnect()
 {
-    $con = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME)
-        or die (mysqli_connect_error($con));
-    mysqli_set_charset($con, 'utf8') or die (mysqli_error());
+    $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME)
+        or die (mysqli_connect_error($connection));
+    mysqli_set_charset($connection, 'utf8') or die (mysqli_error());
 
-    return $con;
+    return $connection;
 }
 
-//close db connection
-function dbClose($con)
+function dbClose($connection)
 {
-    mysqli_close($con);
+    mysqli_close($connection);
 }
 
 function antiInjection($str)

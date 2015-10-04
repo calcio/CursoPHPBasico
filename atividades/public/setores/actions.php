@@ -20,7 +20,7 @@ $action = isset($_POST['action']) ? trim($_POST['action']) : trim($_GET['action'
 
 switch ($action) {
     case 'insert':
-        verificaToken($token);
+        checkTokenIsValid($token);
         unset($post['id']);
         unset($post['token']);
 
@@ -34,7 +34,7 @@ switch ($action) {
         break;
 
     case 'update':
-        verificaToken($token);
+        checkTokenIsValid($token);
         unset($post['id']);
         unset($post['token']);
 

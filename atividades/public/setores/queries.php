@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../config/constants.php';
-require_once BASE_PATH . 'src/crud.php';
 require_once BASE_PATH . 'src/sessionVerify.php';
 
 checkUserLogedIn();
@@ -11,14 +10,31 @@ checkUserLogedIn();
 * verifique a documentação direto da própria função
 * o primeiro parametro é o nome da tabela, o segundo é um array
 */
+function countRowsDepartment()
+{
+    $connection = dbConnect();
+
+    $options = [
+        'columns' => 'count(id) as totalRows',
+    ];
+    $sql = buildSelect('setores', $options);
+    $qry = mysqli_query($connection, $sql);
+    $result = mysqli_fetch_array($qry, MYSQLI_ASSOC);
+    mysqli_free_result($qry);
+
+    dbClose($connection);
+
+    return $result['totalRows'];
+}
 
 //Recupera todos os dados da tabela
-function getAllSectors(){
+function getAllDepartment($params){
     $connection = dbConnect();
 
     $options = [
         'columns' => 'id, sigla, nome',
         'order_by' => 'sigla, nome DESC',
+        'limit' => $params['limit'] . ', ' . $params['offset'],
     ];
 
     $sql = buildSelect('setores', $options);
@@ -33,12 +49,33 @@ function getAllSectors(){
     return ['result' => $result, 'numRows' => $numRows];
 }
 
-function getSectorById($id)
+//Recupera todos os dados da tabela
+function getListDepartments(){
+    $connection = dbConnect();
+
+    $options = [
+        'columns' => 'id, sigla, nome',
+    ];
+
+    $sql = buildSelect('setores', $options);
+
+    $qry = mysqli_query($connection, $sql);
+    $result = mysqli_fetch_all($qry, MYSQLI_ASSOC);
+    mysqli_free_result($qry);
+
+    dbClose($connection);
+
+    array_unshift($result, ['id' => '', 'sigla' => '', 'nome' => '']);
+
+    return $result;
+}
+
+function getDepartmentById($id)
 {
     $connection = dbConnect();
 
     $options = [
-        'columns' => 'sigla, nome',
+        'columns' => 'id, sigla, nome',
         'where' => ['id' => $id],
     ];
 

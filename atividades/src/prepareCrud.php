@@ -79,7 +79,14 @@ function buildSelect($table, array $options = ['columns' => '*'])
         $options['columns'] .
     ' FROM ' . $table;
 
-    //refatorar para outro método WHERE
+    if (isset($options['join'])) {
+        foreach ($options['join'] as $join) {
+            $sql .= ' ' . $join['type'] . ' ';
+            $sql .= $join['table'] . ' ON ';
+            $sql .= $join['columns'];
+        }
+    }
+
     if (isset($options['where'])) {
         $conditions = createQueryStringCondition($options['where']);
         $conditions = removeFinalComma($conditions, 'fields', "AND ", 4);
@@ -87,11 +94,14 @@ function buildSelect($table, array $options = ['columns' => '*'])
         $sql .= ' WHERE ' . $conditions;
     }
 
-    //refatorar para outro método ORDER BY
     if (isset($options['order_by'])) {
         $sql .= ' ORDER BY ' . $options['order_by'];
     }
 
+    if (isset($options['limit'])) {
+        $sql .= ' LIMIT ' . $options['limit'];
+    }
+    
     return trim($sql);
 }
 
@@ -138,7 +148,7 @@ function createQueryStringCondition($params)
 
     foreach ($params as $key => $value) {
        $fields .= $key . ' = ? AND ';
-   }
+    }
 
    return ['fields' => $fields];
 }

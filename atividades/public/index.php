@@ -33,7 +33,7 @@ require_once dirname(__FILE__) . DS . '../src/protectCSRF.php';
                     <div class="account-wall">
                         <img class="profile-img" src="assets/img/profile.png" alt="imagem da autenticacao">
                         <form class="form-signin" method="post" action="<?= SITE_URL; ?>autenticacao/login.php">
-                            <input type="hidden" name="token" value="<?= geraToken() ?>" />
+                            <input type="hidden" name="token" value="<?= tokenGenerate() ?>" />
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
                                 <input type="email" name="email" id="email" value="calcionit@gmail.com" class="form-control" placeholder="E-mail" required autofocus maxlength="200">

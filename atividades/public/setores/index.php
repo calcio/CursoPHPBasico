@@ -1,14 +1,21 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
 showHeader();
+
 require_once BASE_PATH . 'public/setores/queries.php';
 require_once BASE_PATH . 'src/pagination.php';
 
-$setores = getAllSectors();
+
+//configurções para montar a paginação
+$recordsPerPage = 10;
+$totalRows = countRowsDepartment();
+$limit = returnLimitToQuery(['recordsPerPage' => $recordsPerPage]);
+
+$departments = getAllDepartment(['limit' => $limit, 'offset' => $recordsPerPage]);
+$params = ['recordsPerPage' => $recordsPerPage, 'totalRows' => $totalRows, 'url' => SITE_URL .'setores/index.php'];
 
 showMessage();
 ?>
-
         <div class="container">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -18,9 +25,10 @@ showMessage();
                         class="btn btn-primary" title="Novo registro">
                         <span class="glyphicon glyphicon-plus"></span> Novo
                     </a>
+                    <?php showTotalRegisters($totalRows); ?>
                 </div>
 
-                <?php if ($setores['numRows'] == 0): ?>
+                <?php if ($departments['numRows'] == 0): ?>
                     <div class="alert alert-warning">
                         <h3 class="text-center">
                             <span class="glyphicon glyphicon-warning-sign"></span>
@@ -40,51 +48,24 @@ showMessage();
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-center">
-                                    <?php showPagination(3, 6, SITE_URL .'setores/index.php'); ?>
-                                    <!-- <nav>
-                                        <ul class="pagination pagination-sm">
-                                            <li class="disabled">
-                                                <span>
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </span>
-                                            </li>
-                                            <li class="active">
-                                                <span>1 <span class="sr-only">(current)</span></span>
-                                            </li>
-                                            <li>
-                                                <a href="<?= SITE_URL ?>setores/index.php" aria-label="Next">
-                                                    <span>2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="<?= SITE_URL ?>setores/index.php" aria-label="Next">
-                                                    <span>3</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="<?= SITE_URL ?>setores/index.php" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav> -->
+                                    <?php showPagination($params); ?>
                                 </td>
                             </tr>
                         </tfoot>
 
                         <tbody>
-                        <?php for ($i = 0; $i <= $setores['numRows']-1; $i++) : ?>
+                        <?php for ($i = 0; $i <= $departments['numRows']-1; $i++) : ?>
                             <tr>
-                                <td class="text-center"><?= $setores['result'][$i]['sigla'] ?></td>
-                                <td><?= $setores['result'][$i]['nome'] ?></td>
+                                <td class="text-center"><?= $departments['result'][$i]['sigla'] ?></td>
+                                <td><?= $departments['result'][$i]['nome'] ?></td>
                                 <td class="col-md-2 text-center">
-                                    <a href="<?= SITE_URL ?>setores/view.php?id=<?= $setores['result'][$i]['id'] ?>" title="Vizualizar">
+                                    <a href="<?= SITE_URL ?>setores/view.php?id=<?= $departments['result'][$i]['id'] ?>" title="Vizualizar">
                                         <span class="glyphicon glyphicon-eye-open"></span>
                                     </a>&nbsp;&nbsp;
-                                    <a href="<?= SITE_URL ?>setores/form.php?id=<?= $setores['result'][$i]['id'] ?>" title="Editar">
+                                    <a href="<?= SITE_URL ?>setores/form.php?id=<?= $departments['result'][$i]['id'] ?>" title="Editar">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>&nbsp;&nbsp;
-                                    <a href="" id="<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $setores['result'][$i]['id'] ?>"
+                                    <a href="#" id="<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $departments['result'][$i]['id'] ?>"
                                         title="Excluir"><span class="text-danger glyphicon glyphicon-trash"></span>
                                     </a>
                                 </td>

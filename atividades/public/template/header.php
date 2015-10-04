@@ -21,18 +21,23 @@ function showHeader(array $css=[])
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/normalize.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/styles.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/sticky-footer.css">
     <?php
     if ($css) :
         foreach ($css as $script) :
             $src = SITE_URL . 'assets/css/' . $script . '.css';
+            if (file_exists(BASE_PATH . 'public/assets/css/' . $script . '.css')) :
     ?>
             <link rel="stylesheet" href="<?= $src ?>">
     <?php
+            endif;
         endforeach;
     endif;
     ?>
+
+    <script src="<?= SITE_URL; ?>assets/js/jquery-2.1.4.min.js"></script>
     <title><?= SITE_TITLE; ?></title>
 </head>
 
@@ -57,21 +62,26 @@ function showHeader(array $css=[])
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a hreh="<?= SITE_URL; ?>dasboard.php"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> Listar atividades</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Criar nova atividade</a></li>
+                        <li><a href="<?= SITE_URL; ?>atividades/index.php"><span class="glyphicon glyphicon-tasks"></span> Listar atividades</a></li>
+                        <li><a href="<?= SITE_URL; ?>atividades/form.php"><span class="glyphicon glyphicon-pencil"></span> Criar nova atividade</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Administração <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-cog"></span> Administração <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<?= SITE_URL; ?>usuarios/form.php"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['nome']; ?></a></li>
+                                <li>
+                                    <a href="<?= SITE_URL; ?>usuarios/form.php?id=<?= $_SESSION['id']; ?>">
+                                    <span class="glyphicon glyphicon-user"></span> <?= $_SESSION['nome']; ?></a>
+                                </li>
                                 <li role="separator" class="divider"></li>
 
                                 <?php if (checkUserIsAdmin()) : ?>
                                 <li><a href="<?= SITE_URL; ?>usuarios/index.php"><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
                                 <li><a href="<?= SITE_URL; ?>setores/index.php"><span class="glyphicon glyphicon-map-marker"></span> Setores</a></li>
-                                <li><a href="<?= SITE_URL; ?>status/index.php"><span class="glyphicon glyphicon-check"></span> Status</a></li>
+                                <li><a href="<?= SITE_URL; ?>status-atividade/index.php"><span class="glyphicon glyphicon-check"></span> Status atividade</a></li>
                                 <li role="separator" class="divider"></li>
                                 <?php endif; ?>
                                 <li><a href="<?= SITE_URL; ?>autenticacao/logout.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>

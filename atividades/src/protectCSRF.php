@@ -1,10 +1,10 @@
 <?php
-function geraToken()
+function tokenGenerate()
 {
     return $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
 
-function verificaToken($token)
+function checkTokenIsValid($token)
 {
     if (empty($_SESSION['token']) || $token != $_SESSION['token']) {
         require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../config/constants.php';

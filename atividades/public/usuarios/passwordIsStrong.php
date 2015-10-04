@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');header('Content-Type: text/html; charset=utf-8');
 /*
  * PHP PCRE - How to validate complex passwords using regular expressions
  * Script base: https://gist.github.com/danielpereirabp/4b37984360e6dae5ec6a
@@ -7,9 +8,14 @@
 
 function passwordIsStrong($string) {
     if (!preg_match_all('$\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $string))
-        return FALSE;
-    return TRUE;
+        return false;
+
+    return true;
 }
+
+$password = isset($_POST['senha']) ? trim($_POST['senha']) : '';
+
+echo json_encode(passwordIsStrong($password));
 /*
     Explaining $\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$
     $ = beginning of string

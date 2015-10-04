@@ -1,15 +1,16 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
 showHeader();
+
 require_once BASE_PATH . 'public/setores/queries.php';
 
 if (isset($_REQUEST['id'])) :
     $id = trim($_REQUEST['id']);
 
-    $sector = getSectorById($id);
+    $department = getDepartmentById($id);
 
-    $sigla = $sector['sigla'];
-    $nome  = $sector['nome'];
+    $sigla = $department['sigla'];
+    $nome  = $department['nome'];
 else :
     header('location:' . SITE_URL . 'setores/index.php');
 endif;
@@ -25,14 +26,21 @@ showMessage();
                         <th colspan="2" class="text-right">
                             <a href="<?= SITE_URL ?>setores/index.php"
                                 class="btn btn-primary" title="Voltar">
-                                <span class="glyphicon glyphicon-chevron-left"></span> Voltar</a>
+                                <span class="glyphicon glyphicon-chevron-left"></span> Listar setores
+                            </a>
+                            <a href="<?= SITE_URL ?>setores/form.php"
+                                class="btn btn-primary" title="Novo registro">
+                                <span class="glyphicon glyphicon-plus"></span> Novo
+                            </a>
                             <a href="<?= SITE_URL ?>setores/form.php?id=<?= $id ?>"
                                 class="btn btn-primary" title="Editar">
-                                <span class="glyphicon glyphicon-edit"></span> Editar</a>
+                                <span class="glyphicon glyphicon-edit"></span> Editar
+                            </a>
                             <a href="#"
                                 id = "<?= SITE_URL ?>setores/actions.php?action=delete&id=<?= $id ?>"
                                 title="Excluir" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                                <span class="glyphicon glyphicon-trash"></span> Excluir
+                            </a>
                         </th>
                     </tr>
                 </thead>

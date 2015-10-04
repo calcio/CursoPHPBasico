@@ -98,12 +98,10 @@ ALTER TABLE `atividades` ADD CONSTRAINT `fk_usuario_atividade_demanda` FOREIGN K
 ALTER TABLE `atividades` ADD CONSTRAINT `fk_usuario_atividade_reps` FOREIGN KEY ( `id_responsavel` ) REFERENCES `usuarios` ( `id` );
 
 INSERT INTO `atividades`.`setores` (`id`,`sigla`,`nome`) VALUES (NULL, 'TI', 'Informática');
-INSERT INTO `atividades`.`usuarios` (`id`, `id_setor`, `nome`, `email`, `senha`, `ativo`, `tipo`, `ultimo_login`) VALUES (NULL, '1', 'Administrador', 'calcionit@gmail.com', '$2y$10$FwxTs9yspvfE6lxymxdzMuP4kLco1IoOKBmM73g8l43vWbkND/UZe', 'Sim', 'Administrador', CURRENT_TIMESTAMP);
+INSERT INTO `atividades`.`usuarios` (`id`, `id_setor`, `nome`, `email`, `senha`, `ativo`, `tipo`, `ultimo_login`) VALUES (NULL, '1', 'Administrador', 'admin@empresa.com', '$2y$10$FwxTs9yspvfE6lxymxdzMuP4kLco1IoOKBmM73g8l43vWbkND/UZe', 'Sim', 'Administrador', CURRENT_TIMESTAMP);
 
 
 /*
-INSERT: $2y$10$FwxTs9yspvfE6lxymxdzMuP4kLco1IoOKBmM73g8l43vWbkND/UZe
-BANCO:  $2y$10$FwxTs9yspvfE6lxymxdzMuP4kLco1IoOKBmM73g8l43vWbkND/UZe
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

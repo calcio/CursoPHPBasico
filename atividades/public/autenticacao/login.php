@@ -12,8 +12,7 @@ if ($_POST) {
     $email = isset($email) ? $email : null;
     $senha = isset($senha) ? $senha : null;
 
-    //if (verificaToken($token)) {
-    verificaToken($token);
+    checkTokenIsValid($token);
 
     $email = antiInjection($email);
     $senha = antiInjection($senha);
