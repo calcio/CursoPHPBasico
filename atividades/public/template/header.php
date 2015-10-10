@@ -21,7 +21,6 @@ function showHeader(array $css=[])
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/normalize.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/styles.css">
     <link rel="stylesheet" href="<?= SITE_URL; ?>assets/css/sticky-footer.css">
     <?php

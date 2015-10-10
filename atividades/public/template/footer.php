@@ -13,7 +13,6 @@ function showFooter(array $js=[])
     </footer>
     <script src="<?= SITE_URL; ?>assets/js/bootstrap.min.js"></script>
     <script src="<?= SITE_URL; ?>assets/js/moment.min.js"></script>
-    <script src="<?= SITE_URL; ?>assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="<?= SITE_URL; ?>assets/js/pt-br.js"></script>
     <?php
     if ($js) :

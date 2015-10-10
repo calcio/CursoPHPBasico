@@ -159,4 +159,4 @@ endif;
         </div>
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/footer.php';
-showFooter(['confirmDelete', 'ajaxFormUsuarios']);
+showFooter(['confirmDelete', 'ajaxFormUsers']);

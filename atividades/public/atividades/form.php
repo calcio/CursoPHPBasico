@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/header.php';
-showHeader();
+showHeader(['bootstrap-datetimepicker.min']);
+
 require_once BASE_PATH . 'public/atividades/queries.php';
 require_once BASE_PATH . 'public/setores/queries.php';
 require_once BASE_PATH . 'public/usuarios/queries.php';
@@ -8,7 +9,7 @@ require_once BASE_PATH . 'public/status-atividade/queries.php';
 require_once BASE_PATH . 'src/protectCSRF.php';
 
 $plaintiffsList = getListUsers(); //Popula a selectbox Demandante;
-$statusList   = getListStatus(); //Popula a selectbox Staus Atividade;
+$statusList = getListStatus(); //Popula a selectbox Staus Atividade;
 
 if (isset($_REQUEST['id'])) :
     $action = 'update';
@@ -196,4 +197,4 @@ endif;
         <br />
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . '../template/footer.php';
-showFooter(['confirmDelete', 'ajaxFormActivities']);
+showFooter(['confirmDelete', 'ajaxFormActivities', 'bootstrap-datetimepicker.min']);

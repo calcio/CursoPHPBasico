@@ -1,5 +1,13 @@
 $(document).ready(function(){
     $('#senha').blur(function(){
+        passwordValidate();
+    });
+
+    $(':submit').click(function(){
+        passwordValidate();
+    });
+
+    function passwordValidate() {
         var url =
             window.location.protocol + "//" +
             window.location.host + "/" +
@@ -19,5 +27,5 @@ $(document).ready(function(){
                 }
             }
         });
-    });
+    }
 });
